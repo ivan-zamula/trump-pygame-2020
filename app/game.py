@@ -1,18 +1,23 @@
+from pathlib import Path
+
 import pygame
+
+IMAGES_DIR = Path(__file__).resolve().parent.parent / "images"
 
 pygame.init()
 win = pygame.display.set_mode((500,500))
 pygame.display.set_caption("Игруха")
 
-walkRight = [pygame.image.load('right_1.png'),pygame.image.load('right_2.png'),
-             pygame.image.load('right_3.png'),pygame.image.load('right_4.png'),
-             pygame.image.load('right_5.png'),pygame.image.load('right_6.png')]
-
-walkLeft =  [pygame.image.load('left_1.png'),pygame.image.load('left_2.png'),
-             pygame.image.load('left_3.png'),pygame.image.load('left_4.png'),
-             pygame.image.load('left_5.png'),pygame.image.load('left_6.png')]
-bg = pygame.image.load('bg.jpg')
-playerStand = pygame.image.load('idle.png')
+walkRight = [
+    pygame.image.load(str(IMAGES_DIR / f'right_{frame}.png'))
+    for frame in range(1, 7)
+]
+walkLeft = [
+    pygame.image.load(str(IMAGES_DIR / f'left_{frame}.png'))
+    for frame in range(1, 7)
+]
+bg = pygame.image.load(str(IMAGES_DIR / 'bg.jpg'))
+playerStand = pygame.image.load(str(IMAGES_DIR / 'idle.png'))
 
 clock = pygame.time.Clock()
 
